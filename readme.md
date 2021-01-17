@@ -21,13 +21,13 @@ import esbuild from 'esbuild';
 import pluginBabel from 'esbuild-plugin-babel';
 
 esbuild
-	.build({
-		entryPoints: ['index.js'],
-		bundle: true,
-		outfile: 'main.js',
-		plugins: [pluginBabel()]
-	})
-	.catch(() => process.exit(1));
+    .build({
+        entryPoints: ['index.js'],
+        bundle: true,
+        outfile: 'main.js',
+        plugins: [pluginBabel()]
+    })
+    .catch(() => process.exit(1));
 ```
 
 `package.json`
