@@ -5,10 +5,11 @@
 	"repository": "nativew/esbuild-plugin-babel",
 	"author": "Antoine Boulanger (https://github.com/antoineboulanger)",
 	"license": "ISC",
-	"exports": "index.js",
-	"main": "index.js",
+	"exports": "src/index.js",
+	"main": "src/index.js",
+	"type": "module",
 	"scripts": {
-		"format": "prettier --write '*'"
+		"format": "prettier --write '**/*'"
 	},
 	"peerDependencies": {
 		"@babel/core": "^7.0.0"
@@ -18,6 +19,11 @@
 		"prettier": "^2.2.1"
 	},
 	"files": [
-		"index.js"
+		"src"
+	],
+	"keywords": [
+		"babel",
+		"esbuild",
+		"esbuild-plugin"
 	]
 }
