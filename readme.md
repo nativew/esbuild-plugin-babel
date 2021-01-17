@@ -30,6 +30,8 @@ esbuild
     .catch(() => process.exit(1));
 ```
 
+<br>
+
 `package.json`
 
 ```json
@@ -49,11 +51,13 @@ esbuild
 
 ```js
 babel({
-    filter = /.*/,
-    namespace = '',
-    config = {} // babel config here or in babel.config.json
+    filter: /.*/,
+    namespace: '',
+    config: {} // babel config here or in babel.config.json
 })
 ```
+
+<br>
 
 [`babel.config.json`](https://babeljs.io/docs/en/configuration)
 
@@ -64,6 +68,8 @@ babel({
     "sourceMaps": "inline"
 }
 ```
+
+<br>
 
 [`.browserslistrc`](https://github.com/browserslist/browserslist)
 
