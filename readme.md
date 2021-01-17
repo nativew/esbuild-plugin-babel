@@ -18,14 +18,14 @@ npm install esbuild-plugin-babel --save-dev
 
 ```js
 import esbuild from 'esbuild';
-import pluginBabel from 'esbuild-plugin-babel';
+import babel from 'esbuild-plugin-babel';
 
 esbuild
     .build({
         entryPoints: ['index.js'],
         bundle: true,
         outfile: 'main.js',
-        plugins: [pluginBabel()]
+        plugins: [babel()]
     })
     .catch(() => process.exit(1));
 ```
@@ -48,7 +48,7 @@ esbuild
 `esbuild.config.js`
 
 ```js
-pluginBabel({
+babel({
     filter = /.*/,
     namespace = '',
     config = {} // babel config here or in babel.config.json
