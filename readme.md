@@ -60,7 +60,7 @@ babel({
 ```json
 {
     "presets": [["@babel/preset-env", { "modules": false }]],
-    "plugins": [...],
+    "plugins": ["@babel/plugin"],
     "sourceMaps": "inline"
 }
 ```
