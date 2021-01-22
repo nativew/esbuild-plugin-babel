@@ -4,6 +4,11 @@
 
 <br>
 
+First, check if [esbuild supports](https://esbuild.github.io/content-types/) the transform you need _(it's faster)_.  
+If not, you can add the Babel plugin you need with this plugin.
+
+<br>
+
 ### Install
 
 ```zsh
@@ -30,8 +35,6 @@ esbuild
     .catch(() => process.exit(1));
 ```
 
-<br>
-
 `package.json`
 
 ```json
@@ -54,27 +57,25 @@ babel({
     filter: /.*/,
     namespace: '',
     config: {} // babel config here or in babel.config.json
-})
+});
 ```
-
-<br>
 
 [`babel.config.json`](https://babeljs.io/docs/en/configuration)
 
 ```json
 {
-    "presets": [["@babel/preset-env", { "modules": false }]],
-    "plugins": ["@babel/plugin"],
+    "presets": [..],
+    "plugins": [..],
     "sourceMaps": "inline"
 }
 ```
 
 <br>
 
-[`.browserslistrc`](https://github.com/browserslist/browserslist)
+### Check
 
-```yaml
-defaults
-```
+[esbuild-plugin-pipe](https://github.com/nativew/esbuild-plugin-pipe) &nbsp; → &nbsp; Pipe esbuild plugins output.
+
+[esbuild-plugin-postcss-literal](https://github.com/nativew/esbuild-plugin-postcss-literal) &nbsp; → &nbsp; PostCSS tagged template literals plugin for esbuild.
 
 <br>
