@@ -8,15 +8,15 @@ const pluginBabel = (options = {}) => ({
 		const { filter = /.*/, namespace = '', config = {} } = options;
 
 		const transformContents = ({ args, contents }) => {
-			options = babel.loadOptions(config);
+			const babelOptions = babel.loadOptions(config);
 
-			if (options.sourceMaps) {
+			if (babelOptions.sourceMaps) {
 				const filename = path.relative(process.cwd(), args.path);
 
-				options.sourceFileName = filename;
+				babelOptions.sourceFileName = filename;
 			}
 
-			babel.transform(contents, options, (error, result) => {
+			babel.transform(contents, babelOptions, (error, result) => {
 				if (error) throw error;
 
 				contents = result.code;

@@ -64,9 +64,8 @@ babel({
 
 ```json
 {
-    "presets": [..],
-    "plugins": [..],
-    "sourceMaps": "inline"
+    "presets": [...],
+    "plugins": [...]
 }
 ```
 
