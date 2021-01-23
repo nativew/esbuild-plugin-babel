@@ -1,6 +1,6 @@
 {
 	"name": "esbuild-plugin-babel",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Babel plugin for esbuild.",
 	"repository": "nativew/esbuild-plugin-babel",
 	"author": "Antoine Boulanger (https://github.com/antoineboulanger)",
