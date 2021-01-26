@@ -4,7 +4,7 @@ import path from 'path';
 
 const pluginBabel = (options = {}) => ({
 	name: 'babel',
-	setup(build, transform) {
+	setup(build, { transform } = {}) {
 		const { filter = /.*/, namespace = '', config = {} } = options;
 
 		const transformContents = ({ args, contents }) => {

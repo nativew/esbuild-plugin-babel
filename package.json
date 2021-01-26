@@ -9,7 +9,7 @@
 	"main": "src/index.js",
 	"type": "module",
 	"scripts": {
-		"format": "prettier --write '**/*'"
+		"format": "prettier --write --ignore-unknown '**/*'"
 	},
 	"peerDependencies": {
 		"@babel/core": "^7.0.0"
