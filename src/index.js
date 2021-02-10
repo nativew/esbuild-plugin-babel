@@ -8,7 +8,7 @@ const pluginBabel = (options = {}) => ({
 		const { filter = /.*/, namespace = '', config = {} } = options;
 
 		const transformContents = ({ args, contents }) => {
-			const babelOptions = babel.loadOptions(config);
+			const babelOptions = babel.loadOptions({ filename: args.path, ...config });
 
 			if (babelOptions.sourceMaps) {
 				const filename = path.relative(process.cwd(), args.path);
