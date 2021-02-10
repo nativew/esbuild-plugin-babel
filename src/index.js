@@ -16,22 +16,26 @@ const pluginBabel = (options = {}) => ({
 				babelOptions.sourceFileName = filename;
 			}
 
-			babel.transform(contents, babelOptions, (error, result) => {
-				if (error) throw error;
-
-				contents = result.code;
+			return new Promise((resolve, reject) => {
+				babel.transform(contents, babelOptions, (error, result) => {
+					if (error) {
+						reject(error);
+					} else {
+						resolve({ contents: result.code });
+					}
+				});
 			});
-
-			return { contents };
 		};
 
-		if (transform) return transformContents(transform);
+		if (transform) {
+			return transformContents(transform);
+		} else {
+			build.onLoad({ filter, namespace }, async args => {
+				const contents = await fs.promises.readFile(args.path, 'utf8');
 
-		build.onLoad({ filter, namespace }, async args => {
-			const contents = await fs.promises.readFile(args.path, 'utf8');
-
-			return transformContents({ args, contents });
-		});
+				return transformContents({ args, contents });
+			});
+		}
 	}
 });
 
