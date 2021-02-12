@@ -4,7 +4,7 @@ import path from 'path';
 
 const pluginBabel = (options = {}) => ({
 	name: 'babel',
-	setup(build, { transform } = {}) {
+	async setup(build, { transform } = {}) {
 		const { filter = /.*/, namespace = '', config = {} } = options;
 
 		const transformContents = ({ args, contents }) => {
@@ -18,24 +18,18 @@ const pluginBabel = (options = {}) => ({
 
 			return new Promise((resolve, reject) => {
 				babel.transform(contents, babelOptions, (error, result) => {
-					if (error) {
-						reject(error);
-					} else {
-						resolve({ contents: result.code });
-					}
+					error ? reject(error) : resolve({ contents: result.code });
 				});
 			});
 		};
 
-		if (transform) {
-			return transformContents(transform);
-		} else {
-			build.onLoad({ filter, namespace }, async args => {
-				const contents = await fs.promises.readFile(args.path, 'utf8');
+		if (transform) return await transformContents(transform);
 
-				return transformContents({ args, contents });
-			});
-		}
+		build.onLoad({ filter, namespace }, async args => {
+			const contents = await fs.promises.readFile(args.path, 'utf8');
+
+			return await transformContents({ args, contents });
+		});
 	}
 });
 
