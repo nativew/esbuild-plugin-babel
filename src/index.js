@@ -4,7 +4,7 @@ import path from 'path';
 
 const pluginBabel = (options = {}) => ({
 	name: 'babel',
-	async setup(build, { transform } = {}) {
+	setup(build, { transform } = {}) {
 		const { filter = /.*/, namespace = '', config = {} } = options;
 
 		const transformContents = ({ args, contents }) => {
@@ -30,12 +30,12 @@ const pluginBabel = (options = {}) => ({
 			});
 		};
 
-		if (transform) return await transformContents(transform);
+		if (transform) return transformContents(transform);
 
 		build.onLoad({ filter, namespace }, async args => {
 			const contents = await fs.promises.readFile(args.path, 'utf8');
 
-			return await transformContents({ args, contents });
+			return transformContents({ args, contents });
 		});
 	}
 });
