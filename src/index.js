@@ -8,7 +8,14 @@ const pluginBabel = (options = {}) => ({
 		const { filter = /.*/, namespace = '', config = {} } = options;
 
 		const transformContents = ({ args, contents }) => {
-			const babelOptions = babel.loadOptions({ filename: args.path, ...config });
+			const babelOptions = babel.loadOptions({
+				...config,
+				filename: args.path,
+				caller: {
+					name: 'esbuild-plugin-babel',
+					supportsStaticESM: true
+				}
+			});
 
 			if (babelOptions.sourceMaps) {
 				const filename = path.relative(process.cwd(), args.path);
