@@ -14,7 +14,7 @@ If not, you can add the Babel plugin you need with this plugin.
 ### Install
 
 ```zsh
-npm install esbuild-plugin-babel --save-dev
+npm install esbuild-plugin-babel -D
 ```
 
 <br>
@@ -79,6 +79,8 @@ babel({
 [esbuild-serve](https://github.com/nativew/esbuild-serve) &nbsp; → &nbsp; Serve with live reload for esbuild.
 
 [esbuild-plugin-pipe](https://github.com/nativew/esbuild-plugin-pipe) &nbsp; → &nbsp; Pipe esbuild plugins output.
+
+[esbuild-plugin-svg](https://github.com/nativew/esbuild-plugin-svg) &nbsp; → &nbsp; Svg files import plugin for esbuild.
 
 [esbuild-plugin-postcss-literal](https://github.com/nativew/esbuild-plugin-postcss-literal) &nbsp; → &nbsp; PostCSS tagged template literals plugin for esbuild.
 
