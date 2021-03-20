@@ -32,7 +32,8 @@ esbuild
         entryPoints: ['index.js'],
         bundle: true,
         outfile: 'main.js',
-        plugins: [babel()]
+        plugins: [babel()],
+        // target: ['es5'] // if you target es5 with babel, add this option
     })
     .catch(() => process.exit(1));
 ```
