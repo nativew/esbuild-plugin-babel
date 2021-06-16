@@ -16,7 +16,7 @@ const pluginBabel = (options = {}) => ({
 					supportsStaticESM: true
 				}
 			});
-			if (!babelOptions) return { contents };
+			if (!babelOptions) return;
 
 			if (babelOptions.sourceMaps) {
 				const filename = path.relative(process.cwd(), args.path);
