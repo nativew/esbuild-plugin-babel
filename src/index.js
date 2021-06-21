@@ -1,6 +1,6 @@
-import babel from '@babel/core';
-import fs from 'fs';
-import path from 'path';
+const babel = require('@babel/core');
+const fs = require('fs');
+const path = require('path');
 
 const pluginBabel = (options = {}) => ({
 	name: 'babel',
@@ -16,7 +16,7 @@ const pluginBabel = (options = {}) => ({
 					supportsStaticESM: true
 				}
 			});
-			if (!babelOptions) return { contents };
+			if (!babelOptions) return;
 
 			if (babelOptions.sourceMaps) {
 				const filename = path.relative(process.cwd(), args.path);
@@ -41,4 +41,4 @@ const pluginBabel = (options = {}) => ({
 	}
 });
 
-export default pluginBabel;
+module.exports = pluginBabel;

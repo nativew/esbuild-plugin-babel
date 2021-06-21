@@ -7,7 +7,6 @@
 	"license": "ISC",
 	"exports": "./src/index.js",
 	"main": "src/index.js",
-	"type": "module",
 	"scripts": {
 		"format": "prettier --write --ignore-unknown '**/*'"
 	},
