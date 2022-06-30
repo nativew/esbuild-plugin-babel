@@ -5,6 +5,7 @@ import path from 'path';
 const pluginBabel = (options = {}) => ({
 	name: 'babel',
 	setup(build, { transform } = {}) {
+		const cache = new Map();
 		const { filter = /.*/, namespace = '', config = {} } = options;
 
 		const transformContents = ({ args, contents }) => {
@@ -34,9 +35,17 @@ const pluginBabel = (options = {}) => ({
 		if (transform) return transformContents(transform);
 
 		build.onLoad({ filter, namespace }, async args => {
-			const contents = await fs.promises.readFile(args.path, 'utf8');
+			const key = args.path
+			let value = cache.get(key)
+			const input = await fs.promises.readFile(args.path, 'utf8');
 
-			return transformContents({ args, contents });
+			if (!value || value.input !== input) {
+				let contents = transformContents({ args, contents: input });
+				value = { input, output: contents }
+				cache.set(key, value)
+			}
+
+			return value.output
 		});
 	}
 });
