@@ -34,9 +34,13 @@ const pluginBabel = (options = {}) => ({
 		if (transform) return transformContents(transform);
 
 		build.onLoad({ filter, namespace }, async args => {
-			const contents = await fs.promises.readFile(args.path, 'utf8');
+			try {
+				const contents = await fs.promises.readFile(args.path, 'utf8');
 
-			return transformContents({ args, contents });
+				return transformContents({ args, contents });
+			} catch {
+				return null;
+			}
 		});
 	}
 });
